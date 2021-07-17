@@ -791,16 +791,31 @@ img {
     padding: 16px;
 }
 
-.panel .panel-body p {
-    color: @black;
-
-    a {
-        border-bottom: 1px solid @blue;
-        color: @blue;
-
-        &:hover {
-            border-bottom-color: @info;
-            color: @info;
+.panel .panel-body {
+    p {
+        color: @black;
+    
+        a {
+            border-bottom: 1px solid @blue;
+            color: @blue;
+    
+            &:hover {
+                border-bottom-color: @info;
+                color: @info;
+            }
+        }
+    }
+    ul, ol {
+        li {
+            a {
+                border-bottom: 1px solid @blue;
+                color: @blue;
+        
+                &:hover {
+                    border-bottom-color: @info;
+                    color: @info;
+                }
+            }
         }
     }
 }
