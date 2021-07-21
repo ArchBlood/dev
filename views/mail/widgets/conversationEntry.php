@@ -6,6 +6,7 @@ use humhub\widgets\ModalButton;
 use humhub\modules\content\widgets\richtext\RichText;
 use humhub\modules\mail\widgets\TimeAgo;
 use humhub\libs\Html;
+use humhub\modules\rocketcore\widgets\UserOccupation;
 
 /* @var $this \humhub\modules\ui\view\components\View */
 /* @var $entry \humhub\modules\mail\models\MessageEntry */
@@ -24,6 +25,13 @@ $userModel = Yii::$app->user->identity;
     <?php if(!$isOwnMessage) : ?>
         <div class="author-image pull-left">
             <?= Image::widget(['user' => $entry->user, 'width' => 40]) ?>
+        </div>
+        <div class="media-body author-label">
+            <strong class="media-heading" style="font-size: 10px">
+                <?= Html::encode($entry->user->displayName)  ?>
+            </strong>
+            <br />
+            <?= UserOccupation::widget(['model' => $entry->user]) ?>
         </div>
     <?php endif; ?>
 
