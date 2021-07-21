@@ -2,7 +2,7 @@
 
 .sidebar {
     position: fixed;
-    z-index: 50000;
+    z-index: 1000;
 
     display: block;
 
@@ -28,6 +28,7 @@
     }
 
     &.expanded {
+        z-index: 100000;
         left: 0;
 
         .topbar-frame {
