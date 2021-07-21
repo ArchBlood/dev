@@ -793,7 +793,9 @@ img {
 
 .panel .panel-body {
     p {
-        color: @black;
+        -webkit-font-smoothing: antialiased;
+        color: #333;
+        line-height: 1.5;
 
         a {
             border-bottom: 1px solid @blue;
@@ -807,13 +809,15 @@ img {
     }
     ul, ol {
         li {
-            a {
-                border-bottom: 1px solid @blue;
-                color: @blue;
+            p {
+                a {
+                    border-bottom: 1px solid @blue;
+                    color: @blue;
 
-                &:hover {
-                    border-bottom-color: @info;
-                    color: @info;
+                    &:hover {
+                        border-bottom-color: @info;
+                        color: @info;
+                    }
                 }
             }
         }
