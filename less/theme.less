@@ -102,7 +102,7 @@
 html,
 body {
     height: 100%;
-} 
+}
 
 html {
     scroll-behavior: smooth;
@@ -794,11 +794,11 @@ img {
 .panel .panel-body {
     p {
         color: @black;
-    
+
         a {
             border-bottom: 1px solid @blue;
             color: @blue;
-    
+
             &:hover {
                 border-bottom-color: @info;
                 color: @info;
@@ -810,7 +810,7 @@ img {
             a {
                 border-bottom: 1px solid @blue;
                 color: @blue;
-        
+
                 &:hover {
                     border-bottom-color: @info;
                     color: @info;
@@ -7234,4 +7234,11 @@ label.checksearch .caret {
     @media @mobile {
         display: none !important;
     }
+}
+.mail-conversation-entry .media-content {
+    margin-left: 50px;
+}
+.hideUserInfo.mail-conversation-entry .media-content,
+.mail-conversation-entry.own .media-content {
+    margin-left: 0;
 }

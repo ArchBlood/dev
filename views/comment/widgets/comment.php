@@ -10,6 +10,7 @@ use humhub\modules\user\widgets\Image as UserImage;
 use humhub\modules\file\widgets\ShowFiles;
 use humhub\modules\comment\widgets\Comments;
 use humhub\modules\comment\models\Comment;
+use humhub\modules\rocketcore\widgets\UserOccupation;
 
 /* @var $this \humhub\modules\ui\view\components\View */
 /* @var $comment \humhub\modules\comment\models\Comment */
@@ -24,7 +25,6 @@ use humhub\modules\comment\models\Comment;
 
 /** @var \humhub\modules\comment\Module $module */
 $module = Yii::$app->getModule('comment');
-
 ?>
 
 <div class="media" id="comment_<?= $comment->id; ?>" data-action-component="comment.Comment" data-content-delete-url="<?= $deleteUrl ?>">
@@ -34,7 +34,7 @@ $module = Yii::$app->getModule('comment');
         <ul class="nav nav-pills preferences">
             <li class="dropdown ">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-label="<?= Yii::t('base', 'Toggle comment menu'); ?>" aria-haspopup="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="9" viewBox="0 0 15 9" fill="none"> <path d="M1 1L7.5 8L14 1" stroke="#045269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>  
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="9" viewBox="0 0 15 9" fill="none"> <path d="M1 1L7.5 8L14 1" stroke="#045269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
                 </a>
 
                 <ul class="dropdown-menu pull-right">
@@ -74,6 +74,8 @@ $module = Yii::$app->getModule('comment');
                             &middot <?= UpdatedIcon::getByDated($comment->updated_at) ?>
                         <?php endif; ?>
                     </small>
+                    <br />
+                    <?= UserOccupation::widget(['model' => $user]) ?>
                 </h4>
             </div>
             <!-- class comment_edit_content required since v1.2 -->
