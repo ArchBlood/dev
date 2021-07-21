@@ -124,6 +124,9 @@ body {
         background-color: @white;
     }
 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
     overflow-x: hidden;
     cursor: default;
 }
@@ -774,6 +777,10 @@ img {
                     justify-content: end;
                     align-items: center;
                     display: flex;
+
+                    @media @mobile {
+                        display: none;
+                    }
                 }
             }
         }
@@ -793,7 +800,9 @@ img {
 
 .panel .panel-body {
     p {
-        color: @black;
+        -webkit-font-smoothing: antialiased;
+        color: #333;
+        line-height: 1.5;
     
         a {
             border-bottom: 1px solid @blue;
@@ -807,13 +816,15 @@ img {
     }
     ul, ol {
         li {
-            a {
-                border-bottom: 1px solid @blue;
-                color: @blue;
-        
-                &:hover {
-                    border-bottom-color: @info;
-                    color: @info;
+            p {
+                a {
+                    border-bottom: 1px solid @blue;
+                    color: @blue;
+            
+                    &:hover {
+                        border-bottom-color: @info;
+                        color: @info;
+                    }
                 }
             }
         }
@@ -1348,7 +1359,8 @@ ul.tab-menu-settings li.active>a {
 .nav-tabs .dropdown-menu,
 .account .dropdown-menu {
     background-color: #F2F2F2;
-    border: none
+    border-radius: 8px;
+    border: none;
 }
 
 .nav-pills .dropdown-menu li.divider,
@@ -1375,7 +1387,8 @@ ul.tab-menu-settings li.active>a {
     color: @blue;
     font-weight: 600;
     font-size: 15px;
-    padding: 5px 16px
+    padding: 5px 16px;
+    border-bottom: unset;
 }
 
 .nav-pills .dropdown-menu li a i,
@@ -1525,7 +1538,7 @@ ul.tab-menu-settings li.active>a {
 
 @media (max-width:991px) {
     .controls-header {
-        text-align: left !important
+        text-align: right !important
     }
 }
 
@@ -2631,7 +2644,7 @@ table td a:hover {
 
 .comment-message {
     overflow: hidden;
-    overflow-wrap: break-word
+    overflow-wrap: break-word;
 }
 
 .comment-create-input-group {
@@ -5865,6 +5878,25 @@ ul.tag_input li img {
                     }
                 }
 
+                ul, ol {
+                    li {
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 1.4;
+                        color: #000;
+
+                        a {
+                            border-bottom: 1px solid #045269;
+                            color: #045269;
+    
+                            &:hover {
+                                border-color: #000000;
+                                color: #000000;
+                            }
+                        }
+                    }
+                }
+
                 &.conversation-entry-reply {
                     background-color: #F4F4F4;
                 }
@@ -6182,6 +6214,7 @@ ul.tag_input li img {
 
             .form-search {
                 position: relative;
+                width: 100%;
 
                 background-color: #EFEFEF;
 
@@ -6189,17 +6222,24 @@ ul.tag_input li img {
                 border-radius: 24px;
 
                 padding-bottom: 20px;
-                padding-right: 20px;
+                padding-right: 84px;
                 padding-left: 48px;
                 padding-top: 20px;
 
                 border-radius: 30px;
+                border: unset;
+
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15' fill='none'%3E%3Cpath d='M6.33621 0C2.84241 0 0 2.84241 0 6.33621C0 9.83001 2.84241 12.6724 6.33621 12.6724C9.83001 12.6724 12.6724 9.83001 12.6724 6.33621C12.6724 2.84241 9.82998 0 6.33621 0ZM6.33621 11.564C3.45352 11.564 1.10839 9.21891 1.10839 6.33621C1.10839 3.45352 3.45352 1.10839 6.33621 1.10839C9.21873 1.10839 11.564 3.45352 11.564 6.33621C11.564 9.21891 9.21891 11.564 6.33621 11.564Z' fill='%23B2B1B1'/%3E%3Cpath d='M14.8379 14.054L10.8108 10.0269C10.5943 9.81044 10.2436 9.81044 10.0271 10.0269C9.81062 10.2433 9.81062 10.5942 10.0271 10.8106L14.0542 14.8377C14.1625 14.9459 14.3042 15 14.4461 15C14.5879 15 14.7296 14.9459 14.8379 14.8377C15.0544 14.6213 15.0544 14.2704 14.8379 14.054Z' fill='%23B2B1B1'/%3E%3C/svg%3E");
                 background-repeat: no-repeat;
                 background-position: 16px 12px;
 
                 font-family: @fontFamily;
                 font-weight: 400;
+            }
+            [placeholder] {
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
             .form-button-search {
                 background-color: #045269;
@@ -6534,7 +6574,6 @@ label.checksearch .caret {
                 display: block !important;
 
                 .comment-create {
-                    align-items: center;
                     display: flex;
 
                     .comment-create-image {
@@ -6769,6 +6808,30 @@ label.checksearch .caret {
                                     }
                                 }
                             }
+
+                            .content-preview {
+                                .media {
+                                    position: relative;
+                                    overflow: hidden;
+
+                                    background-color: #dcdcdc;
+                                    border-radius: 8px;
+
+                                    .media-left {
+                                        display: unset;
+                                    }
+                                    .media-body {
+                                        background-color: transparent;
+                                        border-radius: unset;
+
+                                        padding-bottom: 12px;
+
+                                        hr {
+                                            border-color: transparent;
+                                        }
+                                    }
+                                }
+                            }
                         }
                         .wall-entry-controls {
                             @media @mobile {
@@ -6928,6 +6991,11 @@ label.checksearch .caret {
                                     padding-top: 14px;
 
                                     border-radius: 0 0 8px 8px;
+                                }
+
+                                .post-files {
+                                    margin-right: -6px;
+                                    margin-left: -6px;
                                 }
                             }
                             .wall-entry-controls {
@@ -7129,6 +7197,8 @@ label.checksearch .caret {
                                 p {
                                     margin-bottom: unset;
                                     margin-top: unset;
+
+                                    line-height: 1.4;
                                 }
                             }
                         }

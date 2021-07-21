@@ -67,7 +67,7 @@ humhub\modules\stream\assets\StreamAsset::register($this);
                     <?php $form = ActiveForm::begin(['action' => Url::to(['index']), 'method' => 'GET']); ?>
                     <div class="form-group form-group-search form-group-search-page">
                         <?= $form->field($model, 'keyword')->textInput([
-                            'placeholder' => Yii::t('SearchModule.base', 'Search for user, spaces and content'),
+                            'placeholder' => Yii::t('custom', 'Поиск'),
                             'title' => Yii::t('SearchModule.base', 'Search for user, spaces and content'),
                             'class' => 'form-control form-search', 'id' => 'search-input-field'
                         ])->label(false) ?>
