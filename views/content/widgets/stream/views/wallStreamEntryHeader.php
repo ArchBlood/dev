@@ -1,18 +1,15 @@
 <?php
-
 use humhub\libs\Html;
 use humhub\modules\content\components\ContentActiveRecord;
 use humhub\modules\content\widgets\ArchivedIcon;
 use humhub\modules\content\widgets\stream\WallStreamEntryOptions;
-use humhub\modules\content\widgets\UpdatedIcon;
 use humhub\modules\content\widgets\VisibilityIcon;
 use humhub\modules\content\widgets\WallEntryControls;
 use humhub\modules\space\models\Space;
-use humhub\modules\user\models\User;
-use humhub\modules\space\widgets\Image as SpaceImage;
 use humhub\modules\ui\icon\widgets\Icon;
 use humhub\modules\ui\view\components\View;
 use humhub\widgets\TimeAgo;
+use humhub\modules\rocketcore\widgets\UserOccupation;
 
 /* @var $this View */
 /* @var $model ContentActiveRecord */
@@ -74,6 +71,7 @@ $container = $model->content->container;
                 <?= Html::containerLink($model->content->container) ?>
             </span>
         <?php endif; ?>
+        <?= UserOccupation::widget(['model' => $model->content->createdBy]) ?>
     </div>
 
     <div class="media-subheading">

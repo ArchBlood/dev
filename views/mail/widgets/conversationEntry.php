@@ -27,7 +27,7 @@ $userModel = Yii::$app->user->identity;
             <?= Image::widget(['user' => $entry->user, 'width' => 40]) ?>
         </div>
         <div class="media-body author-label">
-            <strong class="media-heading" style="font-size: 10px">
+            <strong class="media-heading">
                 <?= Html::encode($entry->user->displayName)  ?>
             </strong>
             <br />
