@@ -25,6 +25,9 @@ use humhub\modules\rocketcore\widgets\UserOccupation;
 
 /** @var \humhub\modules\comment\Module $module */
 $module = Yii::$app->getModule('comment');
+$occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupation')
+    ? \humhub\modules\rocketcore\widgets\UserOccupation::widget(['model' => $user])
+    : '';
 ?>
 
 <div class="media" id="comment_<?= $comment->id; ?>" data-action-component="comment.Comment" data-content-delete-url="<?= $deleteUrl ?>">
@@ -75,7 +78,7 @@ $module = Yii::$app->getModule('comment');
                         <?php endif; ?>
                     </small>
                     <br />
-                    <?= UserOccupation::widget(['model' => $user]) ?>
+                    <?= $occupation ?>
                 </h4>
             </div>
             <!-- class comment_edit_content required since v1.2 -->

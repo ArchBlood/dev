@@ -36,6 +36,9 @@
 
     $profileImageWidth = $container->getProfileImage()->width() - 10;
     $profileImageHeight = $container->getProfileImage()->height() - 10;
+    $occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupation')
+        ? \humhub\modules\rocketcore\widgets\UserOccupation::widget(['model' => $container])
+        : '';
 ?>
 
 <?= Html::beginTag('div', $options) ?>
@@ -49,6 +52,7 @@
         <!-- show user name and title -->
         <div class="img-profile-data">
             <h1 class="<?= $classPrefix ?>"><?= Html::encode($title) ?></h1>
+            <?= $occupation ?>
             <h2 class="<?= $classPrefix ?> hidden-xs"><?= Html::encode($subTitle) ?></h2>
         </div>
 
