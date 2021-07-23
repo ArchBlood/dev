@@ -17,6 +17,9 @@ use humhub\modules\rocketcore\widgets\UserOccupation;
 
 $isOwnMessage = $entry->user->is(Yii::$app->user->getIdentity());
 $userModel = Yii::$app->user->identity;
+$occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupation')
+    ? \humhub\modules\rocketcore\widgets\UserOccupation::widget(['model' => $entry->user])
+    : '';
 ?>
 
 <?= Html::beginTag('div', $options) ?>
@@ -31,7 +34,7 @@ $userModel = Yii::$app->user->identity;
                 <?= Html::encode($entry->user->displayName)  ?>
             </strong>
             <br />
-            <?= UserOccupation::widget(['model' => $entry->user]) ?>
+            <?= $occupation ?>
         </div>
     <?php endif; ?>
 

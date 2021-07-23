@@ -9,7 +9,6 @@ use humhub\modules\space\models\Space;
 use humhub\modules\ui\icon\widgets\Icon;
 use humhub\modules\ui\view\components\View;
 use humhub\widgets\TimeAgo;
-use humhub\modules\rocketcore\widgets\UserOccupation;
 
 /* @var $this View */
 /* @var $model ContentActiveRecord */
@@ -19,6 +18,9 @@ use humhub\modules\rocketcore\widgets\UserOccupation;
 /* @var $renderOptions WallStreamEntryOptions */
 
 $container = $model->content->container;
+$occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupation')
+    ? \humhub\modules\rocketcore\widgets\UserOccupation::widget(['model' => $model->content->createdBy])
+    : '';
 ?>
 
 <div class="stream-entry-icon-list">
@@ -71,7 +73,7 @@ $container = $model->content->container;
                 <?= Html::containerLink($model->content->container) ?>
             </span>
         <?php endif; ?>
-        <?= UserOccupation::widget(['model' => $model->content->createdBy]) ?>
+        <?= $occupation ?>
     </div>
 
     <div class="media-subheading">
