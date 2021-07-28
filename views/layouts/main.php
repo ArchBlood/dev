@@ -1,13 +1,15 @@
 <?php
-    /* @var $this \yii\web\View */
-    /* @var $content string */
-    use yii\helpers\Url;
-    use yii\helpers\Html;
-    \humhub\assets\AppAsset::register($this);
 
-    use humhub\modules\user\widgets\Image;
+use humhub\modules\user\widgets\Image;
+use humhub\modules\user\widgets\AccountTopMenu;
+use yii\helpers\Url;
+use yii\helpers\Html;
 
-    $userModel = Yii::$app->user->identity;
+\humhub\assets\AppAsset::register($this);
+$userModel = Yii::$app->user->identity;
+
+/* @var $this \yii\web\View */
+/* @var $content string */
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -59,6 +61,9 @@
                         </div>
                     </div>
                     <?php if (Yii::$app->user->isGuest): ?>
+                    <div class="account-top-menu" style="margin: 10%;">
+                        <?= AccountTopMenu::widget(); ?>
+                    </div>
                     <?php else: ?>
                         <div class="account" id="account-top-menu" data-menu-id="account-top-menu">
                             <div class="avatar-frame" id="toggle-menu">
@@ -77,7 +82,7 @@
                     <?php endif; ?>
                 </div>
                 <div class="account-menu">
-                    <?= \humhub\modules\user\widgets\AccountTopMenu::widget(); ?>
+                    <?= AccountTopMenu::widget(); ?>
                 </div>
             </div>
             <div class="pseudo-close mobile-close"></div>
