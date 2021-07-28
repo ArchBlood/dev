@@ -5862,6 +5862,12 @@ ul.tag_input li img {
                     margin-left: auto;
                 }
 
+                & > div {
+                    & > * {
+                        display: inline-grid;
+                    }
+                }
+
                 p {
                     font-weight: 500;
                     font-size: 14px;
@@ -5876,6 +5882,10 @@ ul.tag_input li img {
                             border-color: #000000;
                             color: #000000;
                         }
+
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
                     }
                 }
 
