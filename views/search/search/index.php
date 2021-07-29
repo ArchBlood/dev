@@ -1,6 +1,5 @@
 <?php
 
-use humhub\modules\directory\widgets\Menu;
 use humhub\modules\content\widgets\stream\StreamEntryWidget;
 use humhub\modules\content\widgets\stream\WallStreamEntryOptions;
 use humhub\modules\space\widgets\SpacePickerField;
@@ -57,9 +56,6 @@ humhub\modules\stream\assets\StreamAsset::register($this);
 
 <div class="container section-search" data-action-component="stream.SimpleStream">
     <div class="row">
-        <div class="col-md-2">
-            <?= Menu::widget(); ?>
-        </div>
         <div class="col-md-10">
             <div class="panel">
                 <div class="panel-heading"><strong><?= Yii::t('base', 'Search'); ?></strong></div>
@@ -67,7 +63,7 @@ humhub\modules\stream\assets\StreamAsset::register($this);
                     <?php $form = ActiveForm::begin(['action' => Url::to(['index']), 'method' => 'GET']); ?>
                     <div class="form-group form-group-search form-group-search-page">
                         <?= $form->field($model, 'keyword')->textInput([
-                            'placeholder' => Yii::t('custom', 'Поиск'),
+                            'placeholder' => Yii::t('SearchModule.base', 'Search for user, spaces and content'),
                             'title' => Yii::t('SearchModule.base', 'Search for user, spaces and content'),
                             'class' => 'form-control form-search', 'id' => 'search-input-field'
                         ])->label(false) ?>
