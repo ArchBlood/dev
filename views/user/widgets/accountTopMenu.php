@@ -30,7 +30,7 @@ $userModel = Yii::$app->user->identity;
 <?php else: ?>
     <ul>
         <?php foreach ($entries as $entry): ?>
-            <?php if(!($entry instanceof DropdownDivider)) : ?><li class="mobile-close"><?php endif; ?>
+            <?php if(!($entry instanceof DropdownDivider)) : ?><li><?php endif; ?>
                 <?= $entry->render() ?>
             <?php if(!($entry instanceof DropdownDivider)) : ?></li><?php endif; ?>
         <?php endforeach; ?>

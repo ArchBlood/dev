@@ -2,29 +2,22 @@
 
 .sidebar {
     position: fixed;
-    overflow: hidden;
 
     z-index: 1000;
 
     bottom: 0;
     top: 0;
 
+    height: 100%;
+    height: 100vh;
+    height: ~'calc(var(--vh, 1vh) * 100)';
+
     @media @desktop {
         left: 0;
-
-        height: 100%;
-        height: 100vh;
-        height: ~'calc(var(--vh, 1vh) * 100)';
-
         width: 7.375rem;
     }
     @media @mobile {
         left: -100%;
-
-        height: 100%;
-        height: 100vh;
-        height: ~'calc(var(--vh, 1vh) * 100)';
-
         width: 100vw;
     }
 
@@ -43,6 +36,9 @@
         height: 100%;
 
         width: 7.375rem;
+
+        position: relative;
+        z-index: 0;
 
         @media @mobile {
             -webkit-transition: transform .2s ease-out;
@@ -104,6 +100,8 @@
 
                                 -webkit-filter: url(#filter-icon);
                                 -moz-filter: url(#filter-icon);
+                                -ms-filter: url(#filter-icon);
+                                -o-filter: url(#filter-icon);
                                 filter: url(#filter-icon);
             
                                 position: absolute;
@@ -139,6 +137,14 @@
                             color: @textColorSecondary;
 
                             text-shadow: unset;
+
+                            .label {
+                                transform: translateY(-50%);
+                                position: absolute;
+
+                                background-color: @colorAccent100;
+                                color: @colorWhite !important;
+                            }
                         }
 
                         &:hover {
@@ -197,6 +203,8 @@
 
                     -webkit-filter: url(#filter-icon);
                     -moz-filter: url(#filter-icon);
+                    -ms-filter: url(#filter-icon);
+                    -o-filter: url(#filter-icon);
                     filter: url(#filter-icon);
 
                     position: absolute;
@@ -207,17 +215,27 @@
                     left: 0;
                     top: 0;
 
-                    background-color: @colorGrayscale600;
+                    background-color: @colorGrayscale100;
+                }
+
+                svg {
+                    -webkit-transition: fill .2s ease-out;
+                    -moz-transition: fill .2s ease-out;
+                    transition: fill .2s ease-out;
+
+                    path {
+                        fill: @colorBlack;
+                    }
                 }
 
                 &:hover {
                     &::before {
-                        background-color: @colorGrayscale500;
+                        background-color: @colorAccent100;
                     }
-                }
-                svg {
-                    path {
-                        fill: @colorWhite;
+                    svg {
+                        path {
+                            fill: @colorWhite;
+                        }
                     }
                 }
             }
@@ -227,6 +245,8 @@
 
             .avatar {
                 margin-top: 1.875rem;
+
+                cursor: pointer;
             }
         }
     }
@@ -237,7 +257,7 @@
         transition: opacity .2s ease-out;
 
         position: absolute;
-        z-index: -10;
+        z-index: -100;
         bottom: 0;
         right: 0;
         left: 0;
@@ -262,6 +282,76 @@
             opacity: .3;
         }
     }
+
+    /* Delete Start */
+
+    .user-menu {
+        -webkit-transition: transform .2s ease-out, right .2s ease-out;
+        -moz-transition: transform .2s ease-out, right .2s ease-out;
+        transition: transform .2s ease-out, right .2s ease-out;
+
+        transform: translateX(-100%);
+
+        position: absolute;
+        overflow: hidden;
+
+        z-index: -10;
+
+        bottom: calc(1.5rem - 1rem);
+        left: 0;
+
+        background-color: @colorWhite;
+        border-radius: @borderRadius;
+
+        padding-bottom: 1rem;
+        padding-right: unset;
+        padding-left: unset;
+        padding-top: 1rem;
+
+        &.expanded {
+            transform: translateX(0);
+            left: calc(7.375rem + 0.5rem);
+        }
+
+        ul {
+            padding-bottom: unset;
+            padding-right: unset;
+            padding-left: unset;
+            padding-top: unset;
+
+            margin-bottom: unset;
+            margin-right: unset;
+            margin-left: unset;
+            margin-top: unset;
+
+            list-style-type: none;
+
+            li {
+                white-space: nowrap;
+
+                a {
+                    padding-bottom: 0.25rem;
+                    padding-right: 1rem;
+                    padding-left: 1rem;
+                    padding-top: 0.25rem;
+
+                    display: block;
+
+                    background-color: transparent;
+                    color: @textColorSecondary;
+                }
+
+                &:hover {
+                    a {
+                        background-color: @colorGrayscale100;
+                        color: @textColorPrimary;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Delete End */
 }
 
 .sidebar-button {
@@ -304,6 +394,8 @@
 
             -webkit-filter: url(#filter-icon);
             -moz-filter: url(#filter-icon);
+            -ms-filter: url(#filter-icon);
+            -o-filter: url(#filter-icon);
             filter: url(#filter-icon);
 
             position: absolute;
@@ -314,17 +406,23 @@
             left: 0;
             top: 0;
 
-            background-color: @colorGrayscale600;
+            background-color: @colorWhite;
+            opacity: 0.3;
+        }
+        svg {
+            path {
+                fill: @colorBlack;
+            }
         }
 
         &:hover {
             &::before {
-                background-color: @colorGrayscale500;
+                background-color: @colorAccent100;
             }
-        }
-        svg {
-            path {
-                fill: @colorWhite;
+            svg {
+                path {
+                    fill: @colorAccent100;
+                }
             }
         }
     }

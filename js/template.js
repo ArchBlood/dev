@@ -63,3 +63,42 @@ $(document).ready(function() {
         $('html, body').animate({scrollTop: 0}, 300);
     })
 });
+
+/* Delete */
+
+jQuery(document).ready(function ($) {
+	var open = false;
+
+	$('.user-toggle').click(function (event) {
+		event.stopPropagation();
+		var toggle = open ? closeUsermenu : openUsermenu;
+		toggle();
+	});
+
+    var openUsermenu = function () {
+		$('.user-menu').addClass('expanded');
+		open = true;
+	}
+	var closeUsermenu = function () {
+		$('.user-menu').removeClass('expanded');
+		open = false;
+	}
+
+    $('.user-menu ul li a').click(function (event) {
+		event.stopPropagation();
+		var toggle = closeUsermenu;
+		toggle();
+	});
+
+	$('.sidebar .toggle').click(function (event) {
+		event.stopPropagation();
+		var toggle = closeUsermenu;
+		toggle();
+	});
+
+	$(document).click(function (event) {
+		if (!$(event.target).closest('.expanded').length) {
+			closeUsermenu();
+		}
+	});
+});
