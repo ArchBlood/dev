@@ -31,5 +31,3 @@
 <!-- start: Android Fullscreen -->
 <meta name="mobile-web-app-capable" content="yes">
 <!-- end: Android Fullscreen -->
-
-<?php $this->registerJsFile($this->theme->getBaseUrl() . '/js/template.js'); ?>
