@@ -643,10 +643,10 @@ img {
 .panel .panel-body {
     p {
         -webkit-font-smoothing: antialiased;
-        
+
         color: #333;
         line-height: 1.5;
-    
+
         a {
             border-bottom: 1px solid @blue;
             color: @blue;
@@ -663,7 +663,7 @@ img {
                 a {
                     border-bottom: 1px solid @blue;
                     color: @blue;
-            
+
                     &:hover {
                         border-bottom-color: @info;
                         color: @info;
@@ -5572,6 +5572,14 @@ ul.tag_input li img {
             height: calc(100vh - 26px - 26px);
             margin-bottom: unset;
         }
+        @media @mobile {
+            height: calc(100vh - 16px - 16px);
+            margin-bottom: unset;
+        }
+        @media @mlg {
+            //height: calc(100vh - 16px - 16px - 75px - 6px); // old ui
+            height: calc(100vh - 16px - 16px - 75px - 6px - 40px - 1.875rem); // new ui
+        }
     }
 
     #mail-conversation-header {
@@ -5653,6 +5661,10 @@ ul.tag_input li img {
     }
     .conversation-entry-list {
         margin-bottom: 60px !important;
+
+        @media @mlg {
+            height: auto !important;
+        }
 
         .media {
             padding-right: unset;
@@ -5741,7 +5753,7 @@ ul.tag_input li img {
                         a {
                             border-bottom: 1px solid #045269;
                             color: #045269;
-    
+
                             &:hover {
                                 border-color: #000000;
                                 color: #000000;
@@ -6650,7 +6662,7 @@ label.checksearch .caret {
 
                             p {
                                 -webkit-font-smoothing: antialiased;
-                                
+
                                 text-overflow: ellipsis;
                                 overflow: hidden;
                                 max-width: 100%;
