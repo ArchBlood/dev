@@ -81,7 +81,6 @@
                         
                         .icon {
                             position: relative;
-                            overflow: hidden;
                             z-index: 0;
     
                             justify-content: center;
@@ -124,6 +123,21 @@
                                     stroke: @colorGrayscale600;
                                 }
                             }
+
+                            .label {
+                                transform: translateY(-20%) translateX(50%);
+                                position: absolute;
+                                padding: unset;
+                                height: 0.625rem;
+                                width: 0.625rem;
+                                right: 0;
+                                top: 0;
+
+                                background-color: @colorAccent100;
+                                color: unset !important;
+                                border: 0.125rem solid @colorWhite;
+                                font-size: 0 !important;
+                            }
                         }
                         .name {
                             -webkit-transition: all .2s ease-out;
@@ -137,14 +151,6 @@
                             color: @textColorSecondary;
 
                             text-shadow: unset;
-
-                            .label {
-                                transform: translateY(-50%);
-                                position: absolute;
-
-                                background-color: @colorAccent100;
-                                color: @colorWhite !important;
-                            }
                         }
 
                         &:hover {
