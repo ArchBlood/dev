@@ -21,8 +21,6 @@
         <?= $this->render('head'); ?>
     </head>
     <body>
-        <svg class="svg-filter" width="0" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="filter-icon"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"></feGaussianBlur><feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo"></feColorMatrix><feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite></filter></defs></svg>
-
         <?php $this->beginBody(); ?>
 
         <div class="sidebar-button">
