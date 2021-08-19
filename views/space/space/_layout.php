@@ -26,15 +26,9 @@ $space = $context->contentContainer;
         <div class="col-md-2 layout-nav-container">
             <?= Menu::widget(['space' => $space]); ?>
         </div>
-        <div class="col-md-<?= ($this->hasSidebar()) ? '7' : '10' ?> layout-content-container">
+        <div class="col-md-10 layout-content-container">
             <?= SpaceContent::widget(['contentContainer' => $space, 'content' => $content]) ?>
         </div>
-        <?php if ($this->hasSidebar()): ?>
-            <div class="col-md-3 layout-sidebar-container">
-                <?= $this->getSidebar() ?>
-                <?= FooterMenu::widget(['location' => FooterMenu::LOCATION_SIDEBAR]); ?>
-            </div>
-        <?php endif; ?>
     </div>
 
     <?php if (!$this->hasSidebar()): ?>
