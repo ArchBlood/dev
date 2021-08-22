@@ -3090,7 +3090,16 @@ table td a:hover {
 }
 
 .post-files {
-    margin-top: 10px
+    margin-top: 10px;
+
+    margin-right: -.375rem;
+    margin-left: -.375rem;
+
+    a {
+        & > * {
+            max-height: 480px !important;
+        }
+    }
 }
 
 .post-files img {
@@ -3100,7 +3109,7 @@ table td a:hover {
     max-height: 100%;
     max-width: 100%;
     -webkit-animation-duration: 2s;
-    animation-duration: 2s
+    animation-duration: 2s;
 }
 
 #wallStream.mobile .post-files {
