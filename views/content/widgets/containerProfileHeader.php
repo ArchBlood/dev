@@ -53,7 +53,7 @@
         <div class="img-profile-data">
             <h1 class="<?= $classPrefix ?>"><?= Html::encode($title) ?></h1>
             <?= $occupation ?>
-            <h2 class="<?= $classPrefix ?> hidden-xs"><?= Html::encode($subTitle) ?></h2>
+            <h2 class="<?= $classPrefix ?>"><?= Html::encode($subTitle) ?></h2>
         </div>
 
         <?php if ($canEdit) : ?>

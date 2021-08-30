@@ -795,7 +795,18 @@ img {
 }
 
 .panel-profile .panel-profile-header .img-profile-header-background {
-    min-height: 180px
+    min-height: 180px;
+
+    @media @mobile {
+        position: absolute;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        top: 0;
+    }
 }
 
 .panel-profile .panel-profile-header .img-profile-data {
@@ -810,9 +821,10 @@ img {
         left: 180px;
     }
     @media @mobile {
-        position: relative;
+        position: absolute;
         bottom: 20px;
         left: 110px;
+        right: 0;
     }
 }
 
@@ -2062,6 +2074,10 @@ a.label-warning:hover {
 
 .panel-profile .panel-profile-header .profile-banner-image-container {
     background-color: @info;
+
+    @media @mobile {
+        min-height: 150px;
+    }
 }
 
 @media print {
@@ -7206,4 +7222,9 @@ label.checksearch .caret {
 
 .svg-filter {
     position: absolute;
+}
+
+.rocketcore-user-occupation {
+    -webkit-box-orient: unset !important;
+    text-overflow: unset !important;
 }
