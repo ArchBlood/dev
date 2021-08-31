@@ -21,6 +21,9 @@ $container = $model->content->container;
 $occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupation')
     ? \humhub\modules\rocketcore\widgets\UserOccupation::widget(['model' => $model->content->createdBy])
     : '';
+$userDisabled = class_exists('\\humhub\\modules\\musztabel\\widgets\\PattyStatus')
+    ? \humhub\modules\musztabel\widgets\PattyStatus::widget(['model' => $model->content->createdBy])
+    : ''; //Helps to check if user is disabled. Returns 'Deactivated' if user's status is not equal to ENABLED. Can be customized in /views/musztabel/widgets/pattyStatus.php
 ?>
 
 <div class="stream-entry-icon-list">
@@ -48,7 +51,12 @@ $occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupati
 <div class="wall-entry-header-info media-body">
 
     <div class="media-heading">
-        <?= $title ?>
+
+        <?php if ($userDisabled):?>
+            <span class="text-danger" style="text-decoration: line-through;"><?= $title;?></span> &middot <span class="badge" style="background-color: #ff2424;"><?=$userDisabled;?></span>
+        <?php else:?>
+            <?= $title;?>
+        <?php endif;?>
 
         <div class="wall-entry-icons">
             <?= VisibilityIcon::getByModel($model) ?>

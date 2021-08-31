@@ -28,6 +28,9 @@ $module = Yii::$app->getModule('comment');
 $occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupation')
     ? \humhub\modules\rocketcore\widgets\UserOccupation::widget(['model' => $user])
     : '';
+$userDisabled = class_exists('\\humhub\\modules\\musztabel\\widgets\\PattyStatus')
+    ? \humhub\modules\musztabel\widgets\PattyStatus::widget(['model' => $user])
+    : ''; //Helps to check if user is disabled. Returns 'Deactivated' if user's status is not equal to ENABLED. Can be customized in /views/musztabel/widgets/pattyStatus.php
 ?>
 
 <div class="media" id="comment_<?= $comment->id; ?>" data-action-component="comment.Comment" data-content-delete-url="<?= $deleteUrl ?>">
@@ -71,7 +74,13 @@ $occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupati
         <div class="comment-frame-body">
             <div class="media-body">
                 <h4 class="media-heading">
-                    <?= Html::containerLink($user) ?>
+
+                    <?php if ($userDisabled):?>
+                        <span class="text-danger" style="text-decoration: line-through;"><?= Html::containerLink($user)?></span> &middot <span class="badge" style="background-color: #ff2424;"><?=$userDisabled;?></span>
+                    <?php else:?>
+                        <?= Html::containerLink($user) ?>
+                    <?php endif;?>
+
                     <small>&middot <?= TimeAgo::widget(['timestamp' => $createdAt]) ?>
                         <?php if ($comment->isUpdated()): ?>
                             &middot <?= UpdatedIcon::getByDated($comment->updated_at) ?>
