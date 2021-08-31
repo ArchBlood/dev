@@ -24,6 +24,7 @@
 
     use humhub\modules\content\assets\ContainerHeaderAsset;
     use humhub\modules\file\widgets\Upload;
+    use humhub\modules\user\models\User;
     use yii\helpers\Html;
 
     ContainerHeaderAsset::register($this);
@@ -39,6 +40,9 @@
     $occupation = class_exists('\\humhub\\modules\\rocketcore\\widgets\\UserOccupation')
         ? \humhub\modules\rocketcore\widgets\UserOccupation::widget(['model' => $container])
         : '';
+    $userDisabled = class_exists('\\humhub\\modules\\musztabel\\widgets\\PattyStatus')
+        ? \humhub\modules\musztabel\widgets\PattyStatus::widget(['model' => $container])
+        : ''; //Helps to check if user is disabled. Returns 'Deactivated' if user's status is not equal to ENABLED. Can be customized in /views/musztabel/widgets/pattyStatus.php
 ?>
 
 <?= Html::beginTag('div', $options) ?>
@@ -51,9 +55,13 @@
 
         <!-- show user name and title -->
         <div class="img-profile-data">
-            <h1 class="<?= $classPrefix ?>"><?= Html::encode($title) ?></h1>
+            <?php if($userDisabled) : ?>
+                <h1 class="<?= $classPrefix ?>" style="text-decoration: line-through;"><?= Html::encode($title);?></h1><span class="<?= $classPrefix ?> badge" style="color: #fff; background: #ff2424"><?=$userDisabled?></span>
+            <?php else: ?>
+            <h1 class="<?= $classPrefix ?>"><?= Html::encode($title);?></h1>
             <?= $occupation ?>
             <h2 class="<?= $classPrefix ?>"><?= Html::encode($subTitle) ?></h2>
+            <?php endif;?>
         </div>
 
         <?php if ($canEdit) : ?>
